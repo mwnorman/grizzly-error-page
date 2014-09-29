@@ -10,6 +10,6 @@
   >
   <weld:scan>
     <exclude name="org.jboss.weld.**" />
-    <weld:include name="com.signiant.**"/>
+    <weld:include name="org.mwnorman.**"/>
   </weld:scan>
 </beans>
