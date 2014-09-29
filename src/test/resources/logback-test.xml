@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- scanPeriod does not work 'out-of-the-box' when this file is hosted on S3.
-     Please see SLF4JBridgeHandlerListener how we handle that (hard-coded to 30s scan) -->
 <configuration scan="true" scanPeriod="5 seconds">
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -13,56 +11,9 @@
      for testing, level="WARN" is reasonable
      For more log output, try "INFO", "DEBUG" or "TRACE" 
    -->
-  
-  <logger name="com.signiant" level="WARN" additivity="false">
-    <appender-ref ref="STDOUT" />
-  </logger>
-  
-  <!-- 
-     it is possible to leave "com.signiant" at "INFO" (above)
-     while configuring a specific class (or package) to have a
-     different level:
-       
-       <logger name="com.signiant.skydrop.resources.UserAccountResource" level="DEBUG" additivity="false">
-         <appender-ref ref="STDOUT" />
-        </logger>
-   -->
-   
-   <!-- logger to get detailed Jersey (REST) logging with entity bodies
-        Default is "INFO" which is too verbose, so set it to "WARN" 
-   -->
-   <logger name="com.signiant.skycloud.jersey.SkydropResourceConfig" level="WARN" additivity="false">
-     <appender-ref ref="STDOUT" />
-   </logger>
-
-   <!--loggers for 3rdparty frameworks - uncomment as desired
-    Jersey:
-    <logger name="org.glassfish" level="INFO" additivity="false">
-      <appender-ref ref="STDOUT" />
-    </logger>
-
-    AWS:
-    <logger name="com.amazonaws" level="DEBUG" additivity="false">
-      <appender-ref ref="STDOUT" />
-    </logger>
-
-    AWS low-leve on-the-wire requestsL
-    <logger name="org.apache" level="INFO" additivity="false">
-      <appender-ref ref="STDOUT" />
-    </logger>
-   -->
-  
-   <!-- Dozer bean-to-bean mapping framework -->
-   <logger name="org.dozer" level="WARN" additivity="false">
-     <appender-ref ref="STDOUT" />
-   </logger>
-
+ 
   <root level="WARN">
     <appender-ref ref="STDOUT" />
   </root>
   
-  <!-- needed by jul-to-slf4j bridge: MUST be last listener in file -->
-  <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
-    <resetJUL>true</resetJUL>
-  </contextListener>
 </configuration>

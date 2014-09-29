@@ -10,6 +10,9 @@
     <description>test project to (try to!) figure out weird grizzly behaviour</description>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.source.level>1.7</project.source.level>
+        <project.target.level>1.7</project.target.level>
         <!-- Maven plugin versions -->
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.4</maven-war-plugin.version>
@@ -265,7 +268,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
-                    <argLine>-Dfile.encoding=${project.build.sourceEncoding} -XX:MaxPermSize=512m -Duser.timezone=UTC -noverify ${argLine}</argLine>
+                    <argLine>-Dfile.encoding=${project.build.sourceEncoding} -XX:MaxPermSize=512m -Duser.timezone=UTC -noverify</argLine>
                     <testFailureIgnore>true</testFailureIgnore>
                     <redirectTestOutputToFile>true</redirectTestOutputToFile>
                     <includes>
@@ -277,32 +280,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${maven-war-plugin.version}</version>
-                <configuration>
-                    <warSourceDirectory>${basedir}${defaultRootSource.location}</warSourceDirectory>
-                </configuration>
-                <executions>
-                    <execution>
-                        <!-- First step is to disable the default-war build step. -->
-                        <id>default-war</id>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <!-- Second step is to create an exploded war. Done in prepare-package -->
-                        <id>war-exploded</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>exploded</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <!-- Last step is to make sure that the war is built in the package phase -->
-                        <id>custom-war</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>war</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
