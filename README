@@ -1,4 +1,5 @@
-NB - Grizzly has moved to Eclipse Foundation!
+NB - Grizzly has moved to Eclipse Foundation! 
+https://github.com/eclipse-ee4j/grizzly.git
 
 GrizzlyHttpServerFactory + Jersey + Bean Validation 
 (jersey-container-grizzly2-servlet/jersey-bean-validation ver 2.12, 
