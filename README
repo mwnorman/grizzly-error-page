@@ -1,3 +1,5 @@
+NB - Grizzly has moved to Eclipse Foundation!
+
 GrizzlyHttpServerFactory + Jersey + Bean Validation 
 (jersey-container-grizzly2-servlet/jersey-bean-validation ver 2.12, 
 grizzly-http-server ver 2.3.16, hibernate-validator ver 5.0.0.Final)
